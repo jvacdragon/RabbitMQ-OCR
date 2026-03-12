@@ -10,21 +10,15 @@ export class AppService {
   async sendImageToOCR(file: Express.Multer.File) {
     const base64Image = file.buffer.toString('base64');
 
-    /*
      const response = await firstValueFrom(
       this.httpService.post(
         'http://localhost:5000/ocr',
         {
-          image: base64Image,
-          filename: file.originalname,
-          mimetype: file.mimetype,
-          size: file.size
+          file: base64Image,
         }
       )
     );
-    */
-    return {
-      image: base64Image,
-    };
+
+    return response.data
   }
 }
