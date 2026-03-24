@@ -13,4 +13,15 @@ model ImagemProcessada {
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+
+    marcaImagems MarcaImagem[]
+}
+
+model MarcaImagem{
+    id Int @id @default(autoincrement())
+    nome String
+
+    imagemProcessadaId Int
+
+    imagemProcessada ImagemProcessada @relation(fields: [imagemProcessadaId], references: [id], onDelete: Cascade)
 }

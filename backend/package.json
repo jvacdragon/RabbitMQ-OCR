@@ -27,6 +27,7 @@
     "@prisma/adapter-better-sqlite3": "^7.5.0",
     "@prisma/adapter-libsql": "^7.5.0",
     "@prisma/client": "^7.5.0",
+    "amqplib": "^0.10.9",
     "axios": "^1.13.5",
     "better-sqlite3": "^12.6.2",
     "form-data": "^4.0.5",

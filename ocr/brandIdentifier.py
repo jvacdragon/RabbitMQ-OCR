@@ -9,18 +9,10 @@ import numpy as np
 import re
 
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-app = Flask(__name__)
-CORS(app)
 
-@app.route('/ocr', methods=['POST'])
-def ocr():
-    data = request.json
+def ocr(data):
 
-    if 'file' not in data:
-        return jsonify({'error':'Nenhum arquivo encontrado'}), 400
-    
-    #convertendo imagem de base64 pra arquivo com RGB
-    imageData = base64.b64decode(data['file'])
+    imageData = base64.b64decode(data)
     image = Image.open(BytesIO(imageData)).convert('RGB')
 
     #pre processamento de imagem
@@ -59,7 +51,4 @@ def ocr():
     brandName = re.sub(r'[^a-zA-Z\s]', '', brandName)
     brandName = brandName.replace("\n", "")
 
-    return jsonify({'brand': brandName})
-
-if __name__ == '__main__':
-    app.run(host = '0.0.0.0', port=5000)
+    return brandName
